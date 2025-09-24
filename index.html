@@ -35,7 +35,7 @@
             font-family: Arial, Helvetica, sans-serif;
             border: none;
             border-radius: 8px;
-            box-shadow: 1px 0px 1px black;
+            box-shadow: 1px 2px 2px 1px black;
             background: linear-gradient(135deg, rgb(218, 84, 106), rgb(211, 110, 127));
         }
         button:active{
@@ -94,9 +94,7 @@ function submitAnswer() {
     document.getElementById("wrongAns").style.display = "block";
   } else {
     // For any other input, reset and show again
-    document.getElementById("questionBox").style.display = "block";
-    document.getElementById("loveMessage").style.display = "none";
-    document.getElementById("wrongAns").style.display = "none";
+    document.getElementById("wrongAns").innerHTML = "<p>Please type yes or no</p>";
   }
 }
 
@@ -104,3 +102,4 @@ function submitAnswer() {
 </body>
 
 </html>
+
