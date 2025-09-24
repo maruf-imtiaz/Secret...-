@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body{
+            font-family: Arial, Helvetica, sans-serif;
+            color: rgb(66, 66, 66);
+            overflow-x: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            background: linear-gradient(135deg, rgb(245, 138, 156), pink);
+        }
+        input{
+            margin-top: 4%;
+            padding: 3% ;
+            border: 2px solid rgb(250, 85, 112);
+            border-radius: 8px;
+        }
+        button{
+            margin-top: 4%;
+            margin-left: 25%;
+            padding: 3%;
+            color: white;
+            font-weight: bold;
+            font-family: Arial, Helvetica, sans-serif;
+            border: none;
+            border-radius: 8px;
+            box-shadow: 1px 0px 1px black;
+            background: linear-gradient(135deg, rgb(218, 84, 106), rgb(211, 110, 127));
+        }
+        button:active{
+            box-shadow: 0px 0px 0px black;
+            background: linear-gradient(135deg, rgb(185, 68, 87), rgb(167, 86, 99));
+        }
+    </style>
+</head>
+<body>
+    <div id="overlay"></div>
+
+<div class="popup" id="lovePopup">
+  <div id="questionBox">
+    <h2>Do you love me?...🥺</h2>
+    <input type="text" id="answer" placeholder="Yes / No"> <br>
+    <button onclick="submitAnswer()">Submit</button>
+  </div>
+  <div id="loveMessage" style="display: none;">
+    <h2>I knew it babe...😌 I love you too...😙❤️</h2>
+    <audio id="loveAudio" src="chumma for my babe.mp4"></audio>
+  </div>
+  <div id="wrongAns" style="display: none; font-size: 12px; color: red; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">
+    <p>Wrong answer...⚠</p>
+  </div>
+</div>
+
+<script>
+    function showPopup() {
+  document.getElementById("lovePopup").style.display = "block";
+  document.getElementById("overlay").style.display = "block";
+  document.getElementById("answer").value = "";
+  document.getElementById("questionBox").style.display = "block";
+  document.getElementById("loveMessage").style.display = "none";
+  document.getElementById("wrongAns").style.display = "none";
+}
+
+
+
+function submitAnswer() {
+  const input = document.getElementById("answer").value.trim().toLowerCase();
+
+  if (input === "yes") {
+    // Show love message, hide question
+    document.getElementById("questionBox").style.display = "none";
+    document.getElementById("loveMessage").style.display = "block";
+    document.getElementById("wrongAns").style.display = "none";
+
+    const audio = document.getElementById("loveAudio");
+    audio.loop = false; // Ensure it doesn't repeat
+    audio.currentTime = 0; // Start from beginning
+    audio.play();
+  } else if (input === "no") {
+    // Keep question visible, show wrong answer below
+    document.getElementById("questionBox").style.display = "block";
+    document.getElementById("loveMessage").style.display = "none";
+    document.getElementById("wrongAns").style.display = "block";
+  } else {
+    // For any other input, reset and show again
+    document.getElementById("questionBox").style.display = "block";
+    document.getElementById("loveMessage").style.display = "none";
+    document.getElementById("wrongAns").style.display = "none";
+  }
+}
+
+</script>
+</body>
+</html>
